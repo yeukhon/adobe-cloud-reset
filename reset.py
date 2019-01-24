@@ -3,10 +3,11 @@
 import glob
 import os
 import random
+import subprocess
 
 SL_DIRECTORIES = [
-    '/Library/Application Support/Adobe/SLCache',
-    '/Library/Application Support/Adobe/SLStore'
+    '/Library/Application Support/Adobe/SLCache/*',
+    '/Library/Application Support/Adobe/SLStore/*'
 ]
 
 def random_serial():
