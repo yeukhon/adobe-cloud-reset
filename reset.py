@@ -4,6 +4,11 @@ import glob
 import os
 import random
 
+SL_DIRECTORIES = [
+    '/Library/Application Support/Adobe/SLCache',
+    '/Library/Application Support/Adobe/SLStore'
+]
+
 def random_serial():
     rand = random.SystemRandom()
     return ''.join(str(rand.randrange(9)) for i in range(24))
@@ -19,7 +24,6 @@ def reset_trial():
         file_content = []
         try:
             with open(app_file, 'r') as f:
-                print(app_file)
                 for line in f.readlines():
                     if 'TrialSerialNumber' in line:
                         serial = random_serial()
@@ -31,6 +35,10 @@ def reset_trial():
                 f.writelines(file_content)
         except IOError as e:
             print(e)
+
+    # finish off by removing some cache files
+    for path in SL_DIRECTORIES:
+        subprocess.call(['rm', '-rf', path])
 
 if __name__ == '__main__':
     reset_trial()
