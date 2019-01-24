@@ -3,11 +3,11 @@
 import glob
 import os
 import random
-import subprocess
+import shutil
 
 SL_DIRECTORIES = [
-    '/Library/Application Support/Adobe/SLCache/*',
-    '/Library/Application Support/Adobe/SLStore/*'
+    '/Library/Application Support/Adobe/SLCache',
+    '/Library/Application Support/Adobe/SLStore'
 ]
 
 def random_serial():
@@ -39,7 +39,9 @@ def reset_trial():
 
     # finish off by removing some cache files
     for path in SL_DIRECTORIES:
-        subprocess.call(['rm', '-rf', path])
-
+        try:
+            shutil.rmtree(path)
+        except OSError as e:
+            print(e)
 if __name__ == '__main__':
     reset_trial()
