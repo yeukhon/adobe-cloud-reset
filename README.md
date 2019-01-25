@@ -5,13 +5,19 @@ Reset Adobe Cloud Trials (Photoshop, After Effects, Illustrator, etc)
 
 1. Uninstall existing Adobe softwares (e.g. Photoshop). Download installers from [here](https://prodesigntools.com/adobe-cc-2018-direct-download-links.html).
 
-2. Download the latest version from apps/.
+2. Disable Creative Cloud auto update (and never update!)
+![Creative1](screenshots/cc1.png)
+![Creative2](screenshots/cc2.png)
 
-3. Unzip.
+3. Quit Creative Cloud.
 
-4. Launch the application.
+4. Download the latest version from apps/.
+
+5. Unzip.
+
+6. Launch the application.
 
 Optionally, you can drag and drop the application to the Applications folder.
 
-## Screenshot
-![Screenshot](screenshot.png)
+# Screenshot
+![Screenshot](screenshots/app.png)
