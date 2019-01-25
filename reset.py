@@ -2,7 +2,7 @@
 
 import glob
 import os
-import random
+import re
 import shutil
 
 SL_DIRECTORIES = [
@@ -10,9 +10,13 @@ SL_DIRECTORIES = [
     '/Library/Application Support/Adobe/SLStore'
 ]
 
-def random_serial():
-    rand = random.SystemRandom()
-    return ''.join(str(rand.randrange(9)) for i in range(24))
+def extract_serial(line):
+    pattern = '<Data key="TrialSerialNumber">(?P<serial>\d+)</Data>'
+    r = re.compile(pattern)
+    _line = line.strip()
+    serial = r.match(_line).group('serial')
+    int_serial = int(serial)
+    return int_serial
 
 def get_app_files():
     '''An iterator that returns the next Adobe application.xml to reset.'''
@@ -27,8 +31,9 @@ def reset_trial():
             with open(app_file, 'r') as f:
                 for line in f.readlines():
                     if 'TrialSerialNumber' in line:
-                        serial = random_serial()
-                        new_serial_line = '<Data key="TrialSerialNumber">{serial}</Data>\n'.format(serial=serial)
+                        curr_serial = extract_serial(line)
+                        new_serial = str(curr_serial + 1)
+                        new_serial_line = '<Data key="TrialSerialNumber">{serial}</Data>\n'.format(serial=new_serial)
                         file_content.append(new_serial_line)
                     else:
                         file_content.append(line)
