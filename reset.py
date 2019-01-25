@@ -33,20 +33,24 @@ def reset_trial():
                     if 'TrialSerialNumber' in line:
                         curr_serial = extract_serial(line)
                         new_serial = str(curr_serial + 1)
+                        print('[INFO] Old serial number is %s; new serial number is %s' %(str(curr_serial, new_serial)))
                         new_serial_line = '<Data key="TrialSerialNumber">{serial}</Data>\n'.format(serial=new_serial)
                         file_content.append(new_serial_line)
                     else:
                         file_content.append(line)
             with open(app_file, 'w') as f:
                 f.writelines(file_content)
+            print('[INFO]: Overwritten %s' % app_file)
         except IOError as e:
-            print(e)
+            print('[WARNING]: %s not found' % app_file)
 
     # finish off by removing some cache files
     for path in SL_DIRECTORIES:
         try:
             shutil.rmtree(path)
         except OSError as e:
-            print(e)
+            print('[ERROR] Unable to remove %s' % path)
+
+    print('\nTrial for all Adobe products have been reset!')
 if __name__ == '__main__':
     reset_trial()
