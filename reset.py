@@ -5,7 +5,8 @@ import os
 import re
 import shutil
 
-__VERION__ = '1.0'
+__VERSION__ = '1.1'
+__RELEASE_DATE__ = '2019-01-24'
 
 SL_DIRECTORIES = [
     '/Library/Application Support/Adobe/SLCache',
@@ -52,8 +53,9 @@ def reset_trial():
             shutil.rmtree(path)
         except OSError as e:
             print('[ERROR] Unable to remove %s' % path)
+
 if __name__ == '__main__':
-    print('Version: %s by John Wong' % __VERSION__)
+    print('Version: %s (%s) by John Wong' % (__VERSION__, __RELEASE_DATE__))
     print('Source code: https://github.com/yeukhon/adobe-cloud-reset')
     reset_trial()
     print('\nTrial for all Adobe products have been reset! <3')
