@@ -58,4 +58,4 @@ if __name__ == '__main__':
     print('Version: %s (%s) by John Wong' % (__VERSION__, __RELEASE_DATE__))
     print('Source code: https://github.com/yeukhon/adobe-cloud-reset')
     reset_trial()
-    print('\nTrial for all Adobe products have been reset! <3')
+    print('\nTrials for all Adobe products have been reset! <3')
