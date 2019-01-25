@@ -50,7 +50,7 @@ def reset_trial():
             shutil.rmtree(path)
         except OSError as e:
             print('[ERROR] Unable to remove %s' % path)
-    print('\nTrial for all Adobe products have been reset!')
-
 if __name__ == '__main__':
+    print('Source code: https://github.com/yeukhon/adobe-cloud-reset')
     reset_trial()
+    print('\nTrial for all Adobe products have been reset! <3')
