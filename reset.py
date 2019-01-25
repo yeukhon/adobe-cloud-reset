@@ -33,7 +33,7 @@ def reset_trial():
                     if 'TrialSerialNumber' in line:
                         curr_serial = extract_serial(line)
                         new_serial = str(curr_serial + 1)
-                        print('[INFO] Old serial number is %s; new serial number is %s' %(str(curr_serial, new_serial)))
+                        print('[INFO] Old serial number is %s; new serial number is %s' %(str(curr_serial), new_serial))
                         new_serial_line = '<Data key="TrialSerialNumber">{serial}</Data>\n'.format(serial=new_serial)
                         file_content.append(new_serial_line)
                     else:
@@ -50,7 +50,7 @@ def reset_trial():
             shutil.rmtree(path)
         except OSError as e:
             print('[ERROR] Unable to remove %s' % path)
-
     print('\nTrial for all Adobe products have been reset!')
+
 if __name__ == '__main__':
     reset_trial()
