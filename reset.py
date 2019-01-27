@@ -5,7 +5,7 @@ import os
 import re
 import shutil
 
-__VERSION__ = '1.2'
+__VERSION__ = '1.3'
 __RELEASE_DATE__ = '2019-01-25'
 
 SL_DIRECTORIES = [
@@ -29,6 +29,9 @@ def get_app_files():
 
     # Illustrator
     yield '/Applications/Adobe Illustrator CC 2018/Support Files/AMT/AI/AMT/application.xml'
+
+    # InDesign
+    yield '/Applications/Adobe InDesign CC 2018/Resources/AMT/ID/AMT/application.xml'
 
 def reset_trial():
     for app_file in get_app_files():
