@@ -5,8 +5,8 @@ import os
 import re
 import shutil
 
-__VERSION__ = '1.1'
-__RELEASE_DATE__ = '2019-01-24'
+__VERSION__ = '1.2'
+__RELEASE_DATE__ = '2019-01-25'
 
 SL_DIRECTORIES = [
     '/Library/Application Support/Adobe/SLCache',
@@ -26,6 +26,9 @@ def get_app_files():
 
     for directory in glob.glob('/Library/Application Support/Adobe/Adobe *'):
         yield os.path.join(directory, 'AMT/application.xml')
+
+    # Illustrator
+    yield '/Applications/Adobe Illustrator CC 2018/Support Files/AMT/AI/AMT/application.xml'
 
 def reset_trial():
     for app_file in get_app_files():
